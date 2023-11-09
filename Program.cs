@@ -1,7 +1,17 @@
+using c_.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Adicionando a conexão com o banco de dados de acordo com a string passada em app.settings:
+string mysqlconnection = 
+builder.Configuration.GetConnectionString("MyDbContext");
+builder.Services.AddDbContext<DbContext>(options => options.UseMySql(
+    mysqlconnection, ServerVersion.AutoDetect(mysqlconnection)
+));
 
 var app = builder.Build();
 
