@@ -12,6 +12,13 @@ namespace c_.Models
         public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
         {
         }
+        public DbSet<Pessoa> Pessoas {get; set;}
         public DbSet<Usuario> Usuario {get; set;}
+        public DbSet<Aluno> Alunos {get; set;}
+        public DbSet<Professor> Professores {get; set;}
+        
+
+
+
     }
 }
